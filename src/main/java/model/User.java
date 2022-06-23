@@ -1,6 +1,7 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -93,14 +94,6 @@ public class User implements Serializable {
         this.votes = votes;
     }
 
-    public List<Vote> getVotes() {
-        return votes;
-    }
-
-    public void setVotes(List<Vote> votes) {
-        this.votes = votes;
-    }
-
     public List<Comment> getComments() {
         return comments;
     }
@@ -111,10 +104,10 @@ public class User implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if(this = o) return true;
+        if(this == o) return true;
         if(!(o instanceof User)) return false;
         User user = (User) o;
-        return isLoggedIn() = user.isLoggedIn() &&
+        return isLoggedIn() == user.isLoggedIn() &&
                 Objects.equals(getId(), user.getId()) &&
                 Objects.equals(getUsername(), user.getUsername()) &&
                 Objects.equals(getEmail(), user.getEmail()) &&
